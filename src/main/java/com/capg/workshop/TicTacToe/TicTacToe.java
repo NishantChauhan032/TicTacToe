@@ -3,6 +3,8 @@ package com.capg.workshop.TicTacToe;
 import java.util.Scanner;
 
 public class TicTacToe {
+	static char[] myBoard;
+    static Scanner sc = new Scanner(System.in);
    /**
     * UC1
     * @return
@@ -18,7 +20,7 @@ public class TicTacToe {
     * UC2
     */
 	public static char letter() {
-		Scanner sc = new Scanner(System.in);
+		
 		System.out.println("Player1,Please enter your choice(X/O):");
 		char choice = sc.next().charAt(0);
 		if (choice == 'X') 
@@ -34,10 +36,33 @@ public class TicTacToe {
 		System.out.println("------------");
 		System.out.println(" "+ myBoard[7] +" | "+ myBoard[8] +" | "+ myBoard[9]);
 	}
+	public static int indexSelect() {
+		Scanner a = new Scanner(System.in);
+		System.out.println("Please select your position to move(1 to 9): ");
+		int i=a.nextInt();
+		while(true) {
+			if(myBoard[i]!=' ') {
+				System.out.println("Position already filled.Please choose another position");
+			}else {
+				break;
+			}
+		}
+			return i;
+		
+	}
+	public static boolean freeSpace(char[] myBoard,int i) {
+		if( myBoard[i] == ' ') 
+			return true;
+		else 
+			return false;
+	}
 
 	public static void main(String[] args) {
 		char[] myBoard=board();
 		letter();
-		displayBoard(myBoard);	  
+		displayBoard(myBoard);	
+		indexSelect();
+		
+		
 	}
 }
